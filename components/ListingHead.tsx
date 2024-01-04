@@ -34,7 +34,7 @@ const ListingHead: FC<ListingHeadProps> = ({
         <Image
           sizes=""
           alt="Image"
-          src={`/upload/${imageSrc}`}
+          src={imageSrc}
           fill
           className="object-cover w-full"
         />

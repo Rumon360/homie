@@ -71,7 +71,7 @@ const ListingCard: FC<ListingCardProps> = ({
             fill
             sizes=""
             alt="listing"
-            src={`/upload/${data.imageSrc}`}
+            src={data.imageSrc}
             className="object-cover w-full h-full group-hover:scale-110 transition"
           />
           <div className="absolute top-3 right-3">
