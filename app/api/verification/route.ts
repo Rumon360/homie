@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     const verificationMail = await sendMail({
       email,
       subject: "Email Verification",
-      body: `<h1><a href="${process.env.MY_URL}/verify?token=${emailVerificationToken}&email=${userD.email}" target="_blank">Click here to verify your email</a></h1>`,
+      body: `<h1><a href="https://homie-flame.vercel.app/verify?token=${emailVerificationToken}&email=${userD.email}" target="_blank">Click here to verify your email</a></h1>`,
     });
 
     return NextResponse.json("Email Send");
