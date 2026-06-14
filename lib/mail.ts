@@ -12,22 +12,16 @@ export const sendMail = async ({
   const { SMTP_EMAIL, SMTP_PASSWORD } = process.env;
 
   const transport = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: SMTP_EMAIL, pass: SMTP_PASSWORD },
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: { user: SMTP_EMAIL, pass: SMTP_PASSWORD?.replace(/\s/g, "") },
   });
 
-  try {
-    const testResult = await transport.verify();
-  } catch (error) {
-    return;
-  }
-
-  try {
-    const sendResult = await transport.sendMail({
-      from: SMTP_EMAIL,
-      to: email,
-      subject,
-      html: body,
-    });
-  } catch (error) {}
+  await transport.sendMail({
+    from: SMTP_EMAIL,
+    to: email,
+    subject,
+    html: body,
+  });
 };

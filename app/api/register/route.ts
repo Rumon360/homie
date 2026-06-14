@@ -22,17 +22,17 @@ export async function POST(request: Request) {
       },
     });
 
-    if (user) {
-      const verificationMail = await sendMail({
-        email,
-        subject: "Email Verification",
-        body: `<h1><a href="https://homie-flame.vercel.app/verify?token=${emailVerificationToken}&email=${user.email}" target="_blank">Click here to verify your email</a></h1>`,
-      });
-      return NextResponse.json(user);
-    } else {
-      return NextResponse.error();
-    }
+    if (!user) return NextResponse.error();
+
+    await sendMail({
+      email,
+      subject: "Email Verification",
+      body: `<h1><a href="${process.env.NEXTAUTH_URL}verify?token=${emailVerificationToken}&email=${user.email}" target="_blank">Click here to verify your email</a></h1>`,
+    });
+
+    return NextResponse.json(user);
   } catch (error) {
-    return NextResponse.error();
+    console.error("[register]", error);
+    return NextResponse.json({ error: String(error) }, { status: 500 });
   }
 }
