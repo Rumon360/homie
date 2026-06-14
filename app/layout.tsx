@@ -10,6 +10,7 @@ import { getCurrentUser } from "./actions/getCurrentUser";
 import RentModal from "@/components/modals/RentModal";
 import SearchModal from "@/components/modals/SearchModal";
 import ResetModal from "@/components/modals/ResetModal";
+import { Suspense } from "react";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -38,7 +39,9 @@ export default async function RootLayout({
         <RegisterModal />
         <LoginModal />
         <RentModal />
-        <SearchModal />
+        <Suspense>
+          <SearchModal />
+        </Suspense>
         <ResetModal />
         <Navbar currentUser={currentUser} />
         <div className="pb-20 pt-28">{children}</div>

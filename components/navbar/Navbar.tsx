@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Logo from "./Logo";
 import Search from "./Search";
@@ -22,7 +22,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </MaxWidthWrapper>
       </div>
-      <Categories />
+      <Suspense>
+        <Categories />
+      </Suspense>
     </header>
   );
 };

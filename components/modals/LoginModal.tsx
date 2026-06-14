@@ -143,13 +143,6 @@ function LoginModal() {
         </Form>
         <DialogFooter className="w-full">
           <div className="flex w-full flex-col gap-2">
-            <Button
-              onClick={() => signIn("google")}
-              className="w-full border-black border-[1.8px]"
-              variant={"outline"}
-            >
-              Continue with Google
-            </Button>
             <div className="text-neutral-500 text-sm flex justify-center flex-row items-center gap-2 text-center mt-4">
               <div>Don&apos;t an account?</div>
               <div

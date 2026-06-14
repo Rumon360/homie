@@ -28,7 +28,6 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import useLoginModal from "@/hooks/useLoginModal";
-import { signIn } from "next-auth/react";
 
 function RegisterModal() {
   const { toggle: loginModalToggle } = useLoginModal();
@@ -154,13 +153,6 @@ function RegisterModal() {
         </Form>
         <DialogFooter className="w-full">
           <div className="flex w-full flex-col gap-2">
-            <Button
-              onClick={() => signIn("google")}
-              className="w-full border-black border-[1.8px]"
-              variant={"outline"}
-            >
-              Continue with Google
-            </Button>
             <div className="text-neutral-500 text-sm flex justify-center flex-row items-center gap-2 text-center mt-4">
               <div>Already have an account?</div>
               <div
